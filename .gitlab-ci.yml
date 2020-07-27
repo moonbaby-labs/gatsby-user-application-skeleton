@@ -1,17 +1,16 @@
-
-
 deploy_staging:
-  type: deploy
+  stage: deploy
   script:
   - apt-get update -qy
   - apt-get install -y ruby-dev
   - gem install dpl
-  - dpl --provider=heroku --app=gitlab-ci-python-test-staging --api-key=$HEROKU_STAGING_API_KEY
+  - dpl --provider=heroku --app=$HEROKU_STAGING_APP --api-key=$HEROKU_API_KEY
   only:
   - master
 
 deploy_prod:
-  stage: deployscript:
+  stage: deploy
+  script:
   - apt-get update -qy
   - apt-get install -y ruby-dev
   - gem install dpl
