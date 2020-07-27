@@ -32,3 +32,9 @@ module.exports = {
     // `gatsby-plugin-offline`,
   ],
 }
+
+console.log(process.env);
+
+require("dotenv").config({
+  path: `.env`,
+})

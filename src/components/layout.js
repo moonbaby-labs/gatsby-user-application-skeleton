@@ -13,6 +13,8 @@ import Header from "./header"
 import "./layout.css"
 
 const Layout = ({ children }) => {
+  console.log(process.env.GATSBY_SAMPLE_APP);
+  console.log(process.env.GATSBY_APP_SAMPLE);
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -22,8 +24,6 @@ const Layout = ({ children }) => {
       }
     }
   `)
-
-  console.log(process);
 
   return (
     <>
@@ -39,7 +39,7 @@ const Layout = ({ children }) => {
         <footer>
           © {new Date().getFullYear()}, Built with
           {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+          <a href="https://www.gatsbyjs.org">{process.env.GATSBY_SAMPLE_APP} Gatsby {process.env.GATSBY_APP_SAMPLE} </a>
         </footer>
       </div>
     </>
