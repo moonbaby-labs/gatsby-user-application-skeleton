@@ -11,8 +11,8 @@ const IndexPage = () => (
       <Row>
         <Col>
           <p>
-            This is a Gatsby Starter that I frequently use to get jump started
-            on quick website builds. It includes the following packages:
+            Welcome to the Form App Project.<br/>
+            Built with Love using React, Node.js, and Express.
           </p>
         </Col>
       </Row>

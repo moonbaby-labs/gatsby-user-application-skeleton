@@ -41,9 +41,9 @@ const Layout = ({ children, pageInfo }) => (
             <Col className="footer-col">
               <footer>
                 <span>
-                  © {new Date().getFullYear()}, Built with
+                  © {new Date().getFullYear()}, Developed By
                   {` `}
-                  <a href="https://www.gatsbyjs.org">Gatsby</a>
+                  <a href="https://lunarcollective.io">Lunar Collective</a>
                 </span>
               </footer>
             </Col>
