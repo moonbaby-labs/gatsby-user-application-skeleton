@@ -20,7 +20,12 @@ interface ILayout {
 }
 
 
-
+/**
+ * Layout is the overall layout container that encapsulates the entire application.
+ * It includes any navigation, sidebar
+ * 
+ * @param props 
+ */
 export default function Layout(props: ILayout) {
   const { children, isAuthenticated, user, pageName } = props;
 

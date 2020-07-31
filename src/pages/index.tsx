@@ -1,5 +1,4 @@
 import React, { useEffect } from "react"
-import { Row, Col, Container } from "react-bootstrap"
 
 import Layout from "../components/layout/layout"
 import SEO from "../components/seo"
