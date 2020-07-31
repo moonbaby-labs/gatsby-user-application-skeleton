@@ -5,29 +5,29 @@
  * See: https://www.gatsbyjs.org/docs/static-query/
  */
 
-import React from "react"
-import { StaticQuery, graphql } from "gatsby"
-
+import React, { ReactElement } from "react"
 import { Container, Row, Col } from "react-bootstrap"
+import Navbar from "../navBar/navBar"
+import "./_layout.scss";
+import { user } from "../../@types/user";
 
-import Header from "./header"
-import Navbar from "./navBar"
 
-const Layout = ({ children, pageInfo }) => (
-  <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
-          }
-        }
-      }
-    `}
-    render={data => (
+interface ILayout {
+  children: ReactElement | ReactElement[];
+  isAuthenticated: boolean;
+  user: user;
+  pageName: string;
+}
+
+
+
+export default function Layout(props: ILayout) {
+  const { children, isAuthenticated, user, pageName } = props;
+
+  return (
       <>
         <Container fluid className="px-0 main">
-          <Navbar pageInfo={pageInfo} />
+          <Navbar pageName='' user={user} isAuthenticated={isAuthenticated} />
           <Row noGutters>
             <Col>
               <Container className="mt-5">
@@ -49,9 +49,6 @@ const Layout = ({ children, pageInfo }) => (
             </Col>
           </Row>
         </Container>
-      </>
-    )}
-  />
-)
-
-export default Layout
+    </>
+  )
+}
