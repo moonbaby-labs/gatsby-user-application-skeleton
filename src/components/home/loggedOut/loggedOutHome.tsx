@@ -1,4 +1,4 @@
-import React from "React";
+import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { IComponent } from "../../../@types/icomponent";
 
