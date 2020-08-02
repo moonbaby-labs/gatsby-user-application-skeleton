@@ -1,21 +1,19 @@
-import React, { ReactElement } from "react"
+import React, { ReactElement, useState } from "react"
 import { useAuth0 } from "@auth0/auth0-react";
 import { ApolloClient, InMemoryCache, HttpLink, ApolloProvider } from "@apollo/client";
 
 export default function AppProvider(props: {children: ReactElement}) {
   const { getAccessTokenSilently } = useAuth0();
+  const [ token, setToken ] = useState('');
   const { children } = props;
 
-  const getToken = async () => {
-      try {
-          return await getAccessTokenSilently();
-      } catch (err) {
-          console.log(err);
-          return '';
-      }
+  if (!token || token === '') {
+    getAccessTokenSilently().then(tok => {
+        setToken(tok);
+    }).catch(err => {
+        console.log(err);
+    })
   }
-
-  const token = getToken();
 
   const client = new ApolloClient({
       cache: new InMemoryCache(),

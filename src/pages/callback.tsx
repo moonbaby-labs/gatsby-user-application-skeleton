@@ -2,6 +2,7 @@
 import React from "react"
 import Layout from "../components/layout/layout";
 import { useAuth0 } from "@auth0/auth0-react";
+import axios from 'axios';
 
 
 /**
@@ -15,7 +16,7 @@ export default function Callback() {
     const { user, isAuthenticated } = useAuth0();
 
     if (isAuthenticated) {
-        window.location.href= process.env.GATSBY_BASE_URL;
+        window.location.href = process.env.GATSBY_BASE_URL;
     }
 
     return (

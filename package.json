@@ -9,6 +9,7 @@
     "@auth0/auth0-react": "^1.0.0",
     "@stripe/react-stripe-js": "^1.1.2",
     "@stripe/stripe-js": "^1.8.0",
+    "axios": "^0.19.2",
     "bootstrap": "^4.3.1",
     "dotenv": "^8.2.0",
     "fetch": "^1.1.0",

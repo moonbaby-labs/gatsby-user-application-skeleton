@@ -17,6 +17,7 @@ export function wrapPageElement({ element, props }) {
         <Auth0Provider
         domain={`${process.env.GATSBY_AUTH0_DOMAIN}`}
         clientId={`${process.env.GATSBY_AUTH0_CLIENT_ID}`}
+        audience={`${process.env.GATSBY_AUTH0_API}`}
         useRefreshTokens={true}
         redirectUri={`${process.env.GATSBY_BASE_URL}callback`}
         >

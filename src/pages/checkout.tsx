@@ -9,7 +9,6 @@ import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../components/checkout/CheckoutForm";
 
 import { Container, Row, Col } from 'react-bootstrap';
-import * as process from "process";
 
 const stripePromise = loadStripe(process.env.GATSBY_STRIPE_SECRET_KEY);
 
