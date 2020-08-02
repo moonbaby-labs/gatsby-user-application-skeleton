@@ -1,20 +1,9 @@
-deploy_staging:
-  stage: deploy
-  script:
-    - apt-get update -qy
-    - apt-get install -y ruby-dev
-    - gem install dpl
-    - dpl --provider=heroku --app=$HEROKU_STAGING_APP --api-key=$HEROKU_API_KEY
-  only:
-    - master
+#
+# UNCOMMENT THE PLATFORM WHERE YOU'D LIKE TO PUBLISH
+#
 
-deploy_prod:
-  stage: deploy
-  script:
-    - apt-get update -qy
-    - apt-get install -y ruby-dev
-    - gem install dpl
-    - dpl --provider=heroku --app=gitlab-ci-python-test-staging --api-key=$HEROKU_PROD_API_KEY
-  when: manual
-  only:
-    - master
+# GOOGLE CLOUD PLATFORM BUCKET
+include: https://raw.githubusercontent.com/Lunar-Collective/ci-cd-templates/master/gitlab/node-app-gcp-bucket.yml
+
+# HEROKU PLATFORM
+#include: https://raw.githubusercontent.com/Lunar-Collective/ci-cd-templates/master/gitlab/heroku-base.yml
