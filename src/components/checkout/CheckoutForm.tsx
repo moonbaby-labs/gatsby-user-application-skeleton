@@ -10,12 +10,12 @@ export default function CheckoutForm() {
 
     const [succeeded, setSucceeded]         = useState(false);
     const [error, setError]                 = useState(null);
-    const [processing, setProcessing]       = useState('');
+    const [processing, setProcessing]       = useState(false);
     const [disabled, setDisabled]           = useState(true);
     const [clientSecret, setClientSecret]   = useState('');
     const stripe                            = useStripe();
     const elements                          = useElements();
-    const nodeServer                        = "http://localhost:8888";
+    const nodeServer                        = process.env.GATSBY_HANDLE_PAYMENT_INTENT_URL;
 
     useEffect(() => {
 
