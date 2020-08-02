@@ -1,6 +1,7 @@
 import React from 'react';
 import { IComponent } from '../../../@types/icomponent';
 import { Container, Row, Col } from 'react-bootstrap';
+import { useQuery , gql } from '@apollo/client';
 
 
 /**
@@ -11,6 +12,20 @@ import { Container, Row, Col } from 'react-bootstrap';
  */
 export default function LoggedInHome(props: IComponent) {
     const {user, isAuthenticated} = props;
+
+    if (!isAuthenticated) {
+        return null
+    }
+
+    const EXCHANGE_RATES = gql`
+    query {
+        allAuthors {
+        id
+        }
+    }
+    `;
+
+    const { loading, error, data } = useQuery(EXCHANGE_RATES);
 
     return isAuthenticated && (
         <Container>
