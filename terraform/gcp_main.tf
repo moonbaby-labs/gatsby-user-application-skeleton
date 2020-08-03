@@ -94,7 +94,9 @@ resource "google_dns_record_set" "dns" {
   count   = 1
 
   name = "${var.APP_DOMAIN}."
-  type = "A"
+  type = "CNAME"
+  ttl  = 300
+  rrdatas = [google_compute_backend_bucket.site_backend.self_link]
 
   managed_zone = var.DNS_ZONE_NAME
 }

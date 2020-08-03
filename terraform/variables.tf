@@ -13,7 +13,7 @@ variable "BUCKET_NAME" {
   type = string
 }
 
-variable "DNZ_ZONE_NAME" {
+variable "DNS_ZONE_NAME" {
     type = string
 }
 
