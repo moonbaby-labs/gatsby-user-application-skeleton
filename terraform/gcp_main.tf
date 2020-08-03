@@ -89,6 +89,7 @@ resource "google_compute_target_https_proxy" "default" {
   ssl_certificates = [google_compute_managed_ssl_certificate.default.id]
 }
 
+
 resource "google_dns_record_set" "dns" {
   project = var.PROJECT_NAME
   count   = 1
