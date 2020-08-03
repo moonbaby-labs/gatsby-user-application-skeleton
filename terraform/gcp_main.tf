@@ -25,7 +25,7 @@ resource "google_storage_bucket" "static" {
 
 resource "google_storage_bucket_iam_member" "member" {
   bucket = "${var.BUCKET_NAME}"
-  role = "roles/storage.viewer"
+  role = "roles/storage.objectViewer"
   member = "allUsers"
 }
 
