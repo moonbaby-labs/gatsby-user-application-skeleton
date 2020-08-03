@@ -72,3 +72,6 @@ yarn-error.log
 tutorial.md
 
 terraform/.terraform
+.service-account.json
+terraform/terraform.tfstate.backup
+terraform/terraform.tfstate
