@@ -12,3 +12,11 @@ variable "REGION" {
 variable "BUCKET_NAME" {
   type = string
 }
+
+variable "DNZ_ZONE_NAME" {
+    type = string
+}
+
+variable "APP_DOMAIN" {
+    type = string
+}
