@@ -1,7 +1,7 @@
 provider "google" {
     credentials = "${file(var.GCP_SERVICE_KEY)}"
-    project     = "${var.project_name}"
-    region      = "${var.region}"
+    project     = "${var.PROJECT_NAME}"
+    region      = "${var.REGION}"
 }
 
 resource "google_storage_bucket" "static-site" {
