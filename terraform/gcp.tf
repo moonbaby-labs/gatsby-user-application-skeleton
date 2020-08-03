@@ -1,7 +1,5 @@
 provider "google" {
-    credentials = "${file(var.GCP_SERVICE_KEY)}"
-    project     = "${var.PROJECT_NAME}"
-    region      = "${var.REGION}"
+    credentials = "${file(var.gcp_service_key)}"
 }
 
 # ------------------------------------------------------------------------------
@@ -17,6 +15,7 @@ locals {
   access_log_kms_keys        = var.access_logs_kms_key_name == "" ? [] : [var.access_logs_kms_key_name]
   website_kms_keys           = var.website_kms_key_name == "" ? [] : [var.website_kms_key_name]
 }
+
 
 # ------------------------------------------------------------------------------
 # CREATE THE WEBSITE BUCKET
