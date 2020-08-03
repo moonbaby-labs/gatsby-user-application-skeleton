@@ -84,9 +84,9 @@ resource "google_compute_target_https_proxy" "default" {
   project = var.PROJECT_NAME
   count   = 1
   name    = "${var.BUCKET_NAME}"
-  url_map = google_compute_url_map.urlmap
+  url_map = google_compute_url_map.urlmap.id
 
-  ssl_certificates = google_compute_managed_ssl_certificate.default
+  ssl_certificates = [google_compute_managed_ssl_certificate.default.id]
 }
 
 resource "google_dns_record_set" "dns" {
