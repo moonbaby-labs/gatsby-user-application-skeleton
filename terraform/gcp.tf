@@ -142,3 +142,4 @@ resource "google_dns_record_set" "cname" {
   ttl          = var.dns_record_ttl
   rrdatas      = ["c.storage.googleapis.com."]
 }
+
