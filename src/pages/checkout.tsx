@@ -10,7 +10,7 @@ import CheckoutForm from "../components/checkout/CheckoutForm";
 
 import { Container, Row, Col } from 'react-bootstrap';
 
-const stripePromise = loadStripe(process.env.GATSBY_STRIPE_SECRET_KEY);
+const stripePromise = loadStripe(process.env.GATSBY_STRIPE_PUBLIC_KEY);
 
 const redirectToCheckout = async event => {
 
