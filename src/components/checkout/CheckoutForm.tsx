@@ -4,6 +4,7 @@ import {
     useStripe,
     useElements
 } from "@stripe/react-stripe-js";
+import {Alert} from "react-bootstrap";
 import {node} from "prop-types";
 
 export default function CheckoutForm() {
@@ -44,7 +45,6 @@ export default function CheckoutForm() {
     }, []);
 
     const cardStyle = {
-
         style: {
             base: {
                 color: "#32325d",
@@ -118,20 +118,19 @@ export default function CheckoutForm() {
             {/* Show any error that happens when processing the payment */}
             {error && (
                 <div className="card-error" role="alert">
-                    {error}
+                    <Alert variant="warning">
+                        {error}
+                    </Alert>
                 </div>
             )}
 
             {/* Show a success message upon completion */}
-            <p className={succeeded ? "result-message" : "result-message hidden"}>
-                Payment succeeded, see the result in your
-                <a
-                    href={`https://dashboard.stripe.com/test/payments`}
-                >
-                    {" "}
-                    Stripe dashboard.
-                </a> Refresh the page to pay again.
-            </p>
+            <div className={succeeded ? "result-message" : "result-message hidden"}>
+                <Alert variant="success">
+                    Payment processed successfully!
+                </Alert>
+
+            </div>
         </form>
     );
 }
