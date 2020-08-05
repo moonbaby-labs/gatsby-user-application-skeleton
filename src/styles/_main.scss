@@ -30,6 +30,10 @@ a.link-no-style {
     justify-content: center;
     width: 100%;
 
+    a {
+      color:$blue;
+    }
+
     span {
       align-self: center;
       text-align: center;

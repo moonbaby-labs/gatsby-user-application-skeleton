@@ -8,9 +8,7 @@
 import React, { ReactElement } from "react"
 import { Container, Row, Col } from "react-bootstrap"
 import Navbar from "../navBar/navBar"
-import "./_layout.scss";
 import { user } from "../../@types/user";
-
 
 interface ILayout {
   children: ReactElement | ReactElement[];
