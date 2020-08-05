@@ -14,7 +14,7 @@ export default function LoginButton(props: ILoginProps) {
 
     return (
         !isAuthenticated && (
-            <button onClick={() => loginWithRedirect()}>Register / Log In</button>
+            <button className="login-button" onClick={() => loginWithRedirect()}>Register / Log In</button>
         )
     )
 }

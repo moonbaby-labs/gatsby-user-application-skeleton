@@ -117,7 +117,7 @@ export default function CheckoutForm() {
 
             {/* Show any error that happens when processing the payment */}
             {error && (
-                <div className="card-error" role="alert">
+                <div className="result-message card-error" role="alert">
                     <Alert variant="warning">
                         {error}
                     </Alert>
@@ -125,7 +125,7 @@ export default function CheckoutForm() {
             )}
 
             {/* Show a success message upon completion */}
-            <div className={succeeded ? "result-message" : "result-message hidden"}>
+            <div className={succeeded ? "result-message" : "result-message hidden"} role="alert">
                 <Alert variant="success">
                     Payment processed successfully!
                 </Alert>

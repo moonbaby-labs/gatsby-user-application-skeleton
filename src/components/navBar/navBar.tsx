@@ -28,7 +28,7 @@ export default function CustomNavbar (props: INavProps) {
           <Nav className="justify-content-end" activeKey={pageName}>
           </Nav>
         </Navbar.Collapse>
-            <LoginButton isAuthenticated={isAuthenticated} />
+            <LoginButton isAuthenticated={isAuthenticated}  />
             <ProfileIcon user={user} isAuthenticated={isAuthenticated} />
         </Container>
       </Navbar>
