@@ -1,5 +1,5 @@
 provider "google" {
-    credentials = "${file(var.gcp_service_key)}"
+ #   credentials = "${file(var.gcp_service_key)}"
 }
 
 # ------------------------------------------------------------------------------
@@ -125,20 +125,83 @@ resource "google_storage_bucket_acl" "analytics_write" {
 }
 
 # ---------------------------------------------------------------------------------------------------------------------
-# CREATE OPTIONAL CNAME ENTRY IN CLOUD DNS
+# SETUP DOMAIN
 # ---------------------------------------------------------------------------------------------------------------------
+/** provider "google-beta" {
 
-resource "google_dns_record_set" "cname" {
+}
+
+resource "google_compute_managed_ssl_certificate" "default" {
   provider = google-beta
-  count    = var.create_dns_entry ? 1 : 0
 
-  depends_on = [google_storage_bucket.website]
+  name = local.website_domain_name_dashed
 
-  project = var.project
+  managed {
+    domains = ["${var.website_domain_name}."]
+  }
+}
+
+resource "google_compute_target_https_proxy" "default" {
+  provider = google-beta
+
+  name             = local.website_domain_name_dashed
+  url_map          = google_compute_url_map.default.id
+  ssl_certificates = [google_compute_managed_ssl_certificate.default.id]
+}
+
+resource "google_compute_backend_bucket" "website" {
+  name        = local.website_domain_name_dashed
+  bucket_name = google_storage_bucket.website.name
+  enable_cdn  = true
+}
+
+resource "google_compute_url_map" "default" {
+  provider = google-beta
+
+  name        = "url-map"
+
+  default_service = google_compute_backend_bucket.website.id
+
+  host_rule {
+    hosts        = ["${var.website_domain_name}"]
+    path_matcher = "allpaths"
+  }
+
+  path_matcher {
+    name            = "allpaths"
+    default_service = google_compute_backend_bucket.website.id
+
+    path_rule {
+      paths   = ["/*"]
+      service = google_compute_backend_bucket.website.id
+    }
+  }
+}
+
+resource "google_compute_http_health_check" "default" {
+  provider = google-beta
+
+  name               = "http-health-check"
+  request_path       = "/"
+  check_interval_sec = 1 
+  timeout_sec        = 1
+}
+
+resource "google_compute_global_forwarding_rule" "default" {
+  provider = google-beta
+
+  name       = "forwarding-rule"
+  target     = google_compute_target_https_proxy.default.id
+  port_range = 443
+}
+
+resource "google_dns_record_set" "set" {
+  provider = google-beta
 
   name         = "${var.website_domain_name}."
+  type         = "A"
+  ttl          = 3600
   managed_zone = var.dns_managed_zone_name
-  type         = "CNAME"
-  ttl          = var.dns_record_ttl
-  rrdatas      = ["c.storage.googleapis.com."]
-}
+  rrdatas      = [google_compute_global_forwarding_rule.default.ip_address]
+} **/
+
