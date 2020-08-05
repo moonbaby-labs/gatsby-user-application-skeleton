@@ -5,7 +5,7 @@ import {
     useElements
 } from "@stripe/react-stripe-js";
 import {Alert} from "react-bootstrap";
-import {node} from "prop-types";
+import "./_checkout.scss"
 
 export default function CheckoutForm() {
 

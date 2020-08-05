@@ -1,6 +1,7 @@
-@import "../../styles/_variables";
+@import "../../styles/style";
 
 #site-navbar {
+  font-family: $main-font-family;
   background-color: $color-primary;
   position: -webkit-sticky;
   position: sticky;

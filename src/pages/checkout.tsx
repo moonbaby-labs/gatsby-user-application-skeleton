@@ -6,7 +6,7 @@ import { useAuth0 } from "@auth0/auth0-react"
 
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-import CheckoutForm from "../components/checkout/CheckoutForm";
+import CheckoutForm from "../components/home/checkout/CheckoutForm";
 
 import { Container, Row, Col } from 'react-bootstrap';
 
